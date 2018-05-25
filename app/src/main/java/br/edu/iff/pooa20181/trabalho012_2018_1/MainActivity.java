@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         qtdeFaltas = (EditText)findViewById(R.id.edtQtdeFaltas);
         qtdeFilhos = (EditText) findViewById(R.id.edtQtdeFilhos);
 
+        btnCalcular = (Button) findViewById(R.id.btnCalcular);
+
         saida = (TextView) findViewById(R.id.tvSaida);
         saida.setVisibility(View.INVISIBLE);
 
@@ -52,11 +54,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(elemento.equals("Servente"))
             salario = 300;
 
+
         proventos = salario + horasExtras * (salario / 120) + filhos * (salario * 0.03);
         descontos = faltas * (salario / 30) + proventos * 0.1;
         salario = (float) (proventos - descontos);
 
-        elemento = "Proventos: reais"+proventos+" \nDescontos: "+descontos+" reais \nSalario Liquido: "+salario+" reias \n";
+        elemento = "Proventos: "+proventos+" reais \nDescontos: "+descontos+" reais \nSalario Liquido: "+salario+" reais \n";
         saida.setText(elemento);
         saida.setVisibility(View.VISIBLE);
 
