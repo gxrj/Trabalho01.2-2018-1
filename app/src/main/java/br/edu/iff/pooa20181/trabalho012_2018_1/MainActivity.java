@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Spinner cargo;
     private ArrayAdapter<CharSequence> adapter;
@@ -36,30 +36,28 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         btnCalcular.setOnClickListener(this);
     }
 
-    public void onClick(View view){
+    public void onClick(View v){
 
         String elemento = cargo.getSelectedItem().toString();
-        Double salario = 0.00;
-        Double horasExtras = Double.parseDouble(hsExtras.getText().toString());
-        Double faltas = Double.parseDouble(qtdeFaltas.getText().toString());
-        Double filhos = Double.parseDouble(qtdeFilhos.getText().toString());
-        Double proventos, descontos;
+        float salario = 0;
+        int horasExtras = Integer.parseInt(hsExtras.getText().toString());
+        int faltas = Integer.parseInt(qtdeFaltas.getText().toString());
+        int filhos = Integer.parseInt(qtdeFilhos.getText().toString());
+        double proventos, descontos;
 
         if(elemento.equals("Gerente"))
-            salario = 2000.00;
+            salario = 2000;
         if(elemento.equals("Supervisor"))
-            salario = 900.00;
+            salario = 900;
         if(elemento.equals("Servente"))
-            salario = 300.00;
+            salario = 300;
 
-        proventos = salario + horasExtras + filhos;
-        descontos = faltas + proventos*0.1;
-        horasExtras *= salario / 120;
-        faltas *= salario / 30;
-        filhos *= salario * 0.03;
-        salario = proventos - descontos;
+        proventos = salario + horasExtras * (salario / 120) + filhos * (salario * 0.03);
+        descontos = faltas * (salario / 30) + proventos * 0.1;
+        salario = (float) (proventos - descontos);
 
-        saida.setText("Proventos: reais"+proventos+" \nDescontos: "+descontos+" reais \nSalario Liquido: "+salario+" reias \n");
+        elemento = "Proventos: reais"+proventos+" \nDescontos: "+descontos+" reais \nSalario Liquido: "+salario+" reias \n";
+        saida.setText(elemento);
         saida.setVisibility(View.VISIBLE);
 
     }
