@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Trabalho01.2-2018-1</string>
+    <string name="comboHint">Selecione o Cargo</string>
+    <string-array name="cargo">
+        <item>Gerente</item>
+        <item>Supervisor</item>
+        <item>Servente</item>
+    </string-array>
+    <string name="hsExtras">Horas Extras Trabalhadas</string>
+    <string name="qtdeFaltas">Nº de Faltas</string>
+    <string name="qtdeFilhos">Nº de Filhos</string>
+    <string name="btnCalcular">Calcular</string>
+</resources>
